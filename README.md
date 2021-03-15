@@ -26,9 +26,10 @@ Idea behind creating two BTS is to see the change of the total access time betwe
 ![Screenshot from 2021-03-15 19-42-34](https://user-images.githubusercontent.com/42295478/111189123-d2b49180-85c6-11eb-8f65-319ef4654fc8.png)
 
 
-## Compilation and Run
+## Clone, Compile and Run
 
 ```
+-> git clone https://github.com/mharikmert/Text-Representation-with-BTS
 -> gcc -o main main.c -lm
 -> ./main
 ```
