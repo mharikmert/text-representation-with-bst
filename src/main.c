@@ -39,7 +39,7 @@ void print2D(struct Word * node, int space);
 void printTree(struct Word * node);
 void printData(struct Word * node);
 void printFreqs(struct Word * node);
-void swap(struct Word ** a, struct Word ** b);
+void swap(struct Word * a, struct Word * b);
 void sort(struct Word * head);
 int length(struct Word * iter);
 int secAccessTime(struct Word * root);
@@ -332,10 +332,23 @@ void printFreqs(struct Word * node){
 	}
 }
 //swap method to change two nodes values
-void swap(struct Word ** a, struct Word ** b){
-  struct Word * temp = *a;
-  *a = *b;
-  *b = temp;
+void swap(struct Word * a, struct Word * b){
+
+	struct Word * temp = (struct Word *) malloc(sizeof(struct Word));
+        temp -> number = a->number;
+	strcpy(temp->word, a->word);
+	temp -> frequency = a->frequency;
+	temp -> depth = a->depth;
+
+	a -> number = b-> number;
+	strcpy(a->word, b->word);
+	a -> frequency = b->frequency;
+	a -> depth = b->depth;
+
+	b -> number = temp -> number;
+	strcpy(b->word, temp->word);
+	b->frequency = temp->frequency;
+	b ->depth = temp->depth;
 }
 //sort method to sort linked list acc to their frequencies
 void sort(struct Word * head){
@@ -347,7 +360,7 @@ void sort(struct Word * head){
 			index = current -> next;
 			while(index != NULL){
 				if(current -> frequency < index -> frequency){
-					swap(&current, &index);
+					swap(current, index);
 				}
 				index = index -> next;
 			}
